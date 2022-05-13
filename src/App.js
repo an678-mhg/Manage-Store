@@ -1,25 +1,29 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import routes from "./routes";
+import PrivateRoute from "./components/Shared/PrivateRoute";
+import Admin from "./pages/Admin";
+import Login from "./pages/Login";
+import { logOut } from "./redux/slice/user";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(logOut());
+  }, [dispatch]);
+
   return (
     <Routes>
-      {routes.map((route, index) => {
-        const Layout = route.layout;
-        const Component = route.component;
-
-        return (
-          <Route
-            path={route.path}
-            element={
-              <Layout>
-                <Component />
-              </Layout>
-            }
-            key={index}
-          />
-        );
-      })}
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Admin />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }
