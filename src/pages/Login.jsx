@@ -6,6 +6,7 @@ import useSearchParams from "../hooks/useSearchParams";
 
 const Login = () => {
   const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   const searchParams = useSearchParams();
   if (currentUser) return <Navigate to={searchParams.get("redirect") || "/"} />;
 

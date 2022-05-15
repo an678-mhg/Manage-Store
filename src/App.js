@@ -1,23 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/Shared/PrivateRoute";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
-import { logOut } from "./redux/slice/user";
+// import { logOut } from "./redux/slice/user";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(logOut());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
 
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route
-        path="/"
+        path="/*"
         element={
           <PrivateRoute>
             <Admin />
