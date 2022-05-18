@@ -1,7 +1,7 @@
-import React from "react";
+import LayoutPrimary from "../layout/LayoutPrimary";
 
 const Category = () => {
-  return <div>Category</div>;
+  return <LayoutPrimary title="Quản lí danh mục" />;
 };
 
 export default Category;

@@ -1,10 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import DefaultLayout from "../components/Layout/DefaultLayout";
+import DefaultLayout from "../layout/DefaultLayout";
 import Category from "./Category";
 import Dashboard from "./Dashboard";
 import Product from "./Product";
-import Statistical from "./Statistical";
 import Users from "./Users";
 
 const Admin = () => {
@@ -39,14 +38,6 @@ const Admin = () => {
         element={
           <DefaultLayout>
             <Users />
-          </DefaultLayout>
-        }
-      />
-      <Route
-        path="statistical"
-        element={
-          <DefaultLayout>
-            <Statistical />
           </DefaultLayout>
         }
       />
