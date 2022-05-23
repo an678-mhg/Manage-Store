@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Pagination } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import ProductTable from "../components/Table/ProductTable";
 import LayoutPrimary from "../layout/LayoutPrimary";
+import { getAllProducts } from "../redux/slice/product";
 
 const Product = () => {
+  const limit = 5;
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+
+  const { products, totalProducts } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(getAllProducts({ page: page, limit: limit }));
+  }, [page]);
+
   return (
     <LayoutPrimary title="Quản lí sản phẩm">
       <div className="flex items-center justify-between">
@@ -25,6 +39,28 @@ const Product = () => {
           </button>
         </div>
       </div>
+
+      <ProductTable data={products} />
+
+      <Pagination>
+        <Pagination.Prev
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        />
+        {Array.from(Array(Math.ceil(totalProducts / limit)).keys()).map((p) => (
+          <Pagination.Item
+            active={p + 1 === page}
+            onClick={() => setPage(p + 1)}
+            key={p}
+          >
+            {p + 1}
+          </Pagination.Item>
+        ))}
+        <Pagination.Next
+          onClick={() => setPage(page + 1)}
+          disabled={page === Math.ceil(totalProducts / limit)}
+        />
+      </Pagination>
     </LayoutPrimary>
   );
 };
