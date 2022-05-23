@@ -2,12 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../redux/slice/user";
 
-const Header = () => {
+const Header = ({ handleToggleMenu }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="bg-white h-[69px] shadow-md flex items-center justify-between px-[20px]">
-      <div>
+      <div onClick={handleToggleMenu}>
         <i className="bx bx-menu text-[30px]"></i>
       </div>
       <h1 className="font-semibold flex items-center">

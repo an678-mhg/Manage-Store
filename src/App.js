@@ -1,9 +1,7 @@
 // import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import PrivateRoute from "./components/Shared/PrivateRoute";
-import Admin from "./pages/Admin";
-import Login from "./pages/Login";
+import { routers } from "./routers";
 // import { logOut } from "./redux/slice/user";
 
 function App() {
@@ -11,15 +9,22 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route
-        path="/*"
-        element={
-          <PrivateRoute>
-            <Admin />
-          </PrivateRoute>
-        }
-      />
+      {routers.map((route) => {
+        const Component = route.component;
+        const Layout = route.layout;
+
+        return (
+          <Route
+            key={route.path}
+            element={
+              <Layout>
+                <Component />
+              </Layout>
+            }
+            path={route.path}
+          />
+        );
+      })}
     </Routes>
   );
 }
