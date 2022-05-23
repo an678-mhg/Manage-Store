@@ -29,7 +29,7 @@ const Sidebar = ({ show }) => {
     <div
       className={`bg-blue-500 shadow-md h-screen ${
         show ? "w-[250px]" : "w-[80px]"
-      } text-white md:block hidden transition`}
+      } text-white md:block hidden transition-all duration-[10ms]`}
     >
       <div
         className={`px-[20px] py-2 flex items-center ${
@@ -55,9 +55,9 @@ const Sidebar = ({ show }) => {
               to={`${item.path}`}
             >
               <i className={`${item.icon} text-[20px]`}></i>{" "}
-              {show && (
-                <span className="ml-[10px] text-[18px]">{item.name}</span>
-              )}
+              <span className={`ml-[10px] text-[18px] ${show || "hidden"}`}>
+                {item.name}
+              </span>
             </NavLink>
           </li>
         ))}

@@ -1,28 +1,10 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import { adminRouters } from "../routers";
+import ezRouters from "../utils/ezRouters";
 
 const Admin = () => {
-  return (
-    <Routes>
-      {adminRouters.map((route) => {
-        const Component = route.component;
-        const Layout = route.layout;
-
-        return (
-          <Route
-            key={route.path}
-            element={
-              <Layout>
-                <Component />
-              </Layout>
-            }
-            path={route.path}
-          />
-        );
-      })}
-    </Routes>
-  );
+  return <Routes>{ezRouters(adminRouters)}</Routes>;
 };
 
 export default Admin;
