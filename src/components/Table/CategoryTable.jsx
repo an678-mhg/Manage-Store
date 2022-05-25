@@ -1,18 +1,9 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import ProductItem from "./ProductItem";
+import CategoryItem from "./CategoryItem";
 
-const ProductTable = ({ data }) => {
-  const labels = [
-    "STT",
-    "Tên sản phẩm",
-    "Ảnh",
-    "Danh mục",
-    "Giá bán",
-    "Số lượng",
-    "Ngày tạo",
-    "Hành động",
-  ];
+const CategoryTable = ({ data }) => {
+  const labels = ["STT", "Tên danh mục", "Ảnh", "Mở bán", "Mô tả", "Hành động"];
 
   return (
     <Table striped bordered hover className="mt-4">
@@ -25,11 +16,11 @@ const ProductTable = ({ data }) => {
       </thead>
       <tbody>
         {data.map((p, index) => (
-          <ProductItem index={index} p={p} key={p.id} />
+          <CategoryItem index={index} p={p} key={p.id} />
         ))}
       </tbody>
     </Table>
   );
 };
 
-export default ProductTable;
+export default CategoryTable;

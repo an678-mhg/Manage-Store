@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginApi } from "../../api/auth";
 import { toast } from "react-toastify";
-import setAuthToken from "../../utils/setToken";
 import { setUser } from "../../redux/slice/user";
 
 const LoginForm = () => {
@@ -47,7 +46,7 @@ const LoginForm = () => {
             {...register("email", {
               required: { value: true, message: "Trường này là bắt buộc!" },
               pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, // eslint-disable-line
                 message: "Định dạng email không hợp lệ!",
               },
             })}

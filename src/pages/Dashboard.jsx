@@ -2,10 +2,11 @@ import React from "react";
 import Box from "../components/Box";
 import ChartDashboard from "../components/Charts/ChartDashboard";
 import ChartPie from "../components/Charts/ChartPie";
+import Title from "../components/Shared/Title";
 
 const dashboards = [
   {
-    name: "Doanh thu",
+    name: "Danh mục",
     count: 100000000,
     color: "#3498db",
   },
@@ -29,6 +30,7 @@ const dashboards = [
 const Dashboard = () => {
   return (
     <div>
+      <Title title="Trang Tổng Quan" />
       <h1 className="text-2xl font-bold">Trang tổng quan</h1>
       <div className="grid grid-cols-4 gap-3 mt-4">
         {dashboards.map((dashboard, index) => (
@@ -37,11 +39,11 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-3 mt-4">
-        <div>
+        <div className="bg-white shadow-md p-3 rounded-md">
           <ChartDashboard />
         </div>
 
-        <div>
+        <div className="bg-white shadow-md p-3 rounded-md">
           <ChartPie />
         </div>
       </div>

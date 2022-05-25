@@ -1,15 +1,14 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import ProductItem from "./ProductItem";
+import UserItem from "./UsersItem";
 
-const ProductTable = ({ data }) => {
+const UsersTable = ({ data }) => {
   const labels = [
     "STT",
-    "Tên sản phẩm",
+    "Tên nhân viên",
     "Ảnh",
-    "Danh mục",
-    "Giá bán",
-    "Số lượng",
+    "Chức vụ",
+    "Email",
     "Ngày tạo",
     "Hành động",
   ];
@@ -25,11 +24,11 @@ const ProductTable = ({ data }) => {
       </thead>
       <tbody>
         {data.map((p, index) => (
-          <ProductItem index={index} p={p} key={p.id} />
+          <UserItem index={index} p={p} key={p.id} />
         ))}
       </tbody>
     </Table>
   );
 };
 
-export default ProductTable;
+export default UsersTable;
